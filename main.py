@@ -97,7 +97,7 @@ for index in range(0,1):
    Train_KNET = False
    supervised = False and Synthetic_Data # for Synthetic Data
    three_step_training = True  # Train Knet unsupervised with MSE loss, then train separately the BB
-   STEPS_TO_DO = [3]
+   STEPS_TO_DO = [2]
    STEPS_LOSS_FUNC = ['NOT_USED', 'Unsupervised', 'max_PNL', 'max_PNL']#['NOT_USED','Unsupervised','max_P','max_PNL']
    pnl_loss_function = False and not (three_step_training)  # for end to end KNET + BB
    bollinger_learnable = False and pnl_loss_function  # for KNET only end to end --- only when pnl_loss_function=True

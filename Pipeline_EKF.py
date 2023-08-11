@@ -37,6 +37,10 @@ class Pipeline_EKF:
         self.Take_Last_Trained = pipeline_specifications['take_last_trained_model']
         self.folderName = folderName
         self.STEPS_TO_DO = pipeline_specifications['STEPS_TO_DO']
+        ##For Legacy reasons, E2E is called Step 3
+        if 2 in self.STEPS_TO_DO:
+            self.STEPS_TO_DO[self.STEPS_TO_DO.index(2)] = 3
+
         self.BB_VERSION = pipeline_specifications['BB_VERSION']
         self.BB_learnable = pipeline_specifications['bollinger_learnable']
         self.STEPS_INFO = pipeline_specifications['STEPS_INFO']
@@ -152,10 +156,10 @@ class Pipeline_EKF:
 
 
         # One Step Mode : KNET Supervised, KNET Unsupervised , KNET + BB End 2 End
-        # Three Step Mode :
+        # Two Step Mode :
         #   1) KNET Unsupervied
-        #   2) Train BB on Best KNET trained model
-        #   3) Fine Tune -  Train BB & KNET on best trained models
+        #   2) Train BB on Best KNET trained model TODO
+        #   3) E2E
         for step in range(1, 1 + num_steps):
 
 
