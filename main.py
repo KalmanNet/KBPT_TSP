@@ -94,10 +94,10 @@ for index in range(0,1):
    #####################
    ###     Config    ###
    #####################
-   Train_KNET = False
+   Train_Net = False
    supervised = False and Synthetic_Data # for Synthetic Data
    three_step_training = True  # Train Knet unsupervised with MSE loss, then train separately the BB
-   STEPS_TO_DO = [2]
+   STEPS_TO_DO = [1,2]
    STEPS_LOSS_FUNC = ['NOT_USED', 'Unsupervised', 'max_PNL', 'max_PNL']#['NOT_USED','Unsupervised','max_P','max_PNL']
    pnl_loss_function = False and not (three_step_training)  # for end to end KNET + BB
    bollinger_learnable = False and pnl_loss_function  # for KNET only end to end --- only when pnl_loss_function=True
@@ -283,7 +283,7 @@ for index in range(0,1):
       np.save(dataFolderName + give_name(KNet_Pipeline, 'KF_pnl'), KF_cum_pnl)
    except:
       print("No KF PNL")
-   if Train_KNET:
+   if Train_Net:
       KNet_Pipeline.NNTrain(train_input, train_target, cv_input, cv_target)
       if KNet_Pipeline.CRASHED:
          exit(1)
